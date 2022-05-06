@@ -20,8 +20,23 @@ def abrirPuerto(arduino,puerto):
         datos = arduino.readline()
         print(datos.decode('utf-8').rstrip('\n'))
         arduino.close()
+        return True
     except:
-        print('No se pudo conectar con el arduino')
+        return False
+
+
+def escogerPuerto(arduino):
+    ports = serial.tools.list_ports.comports()
+    portList = []
+    for port in ports:
+        portList.append(port)
+        print(str(port))
+    puerto = 'COM'
+    puerto += input('Escoga el COM')
+    arduino.port = puerto
+    Conectado = abrirPuerto(arduino,puerto)
+    return Conectado
+
 
 def main():
     arduino = serial.Serial()
@@ -30,17 +45,15 @@ def main():
     puerto = revisarArchivo()
     arduino.port = puerto
     if puerto != '':
-        abrirPuerto(arduino,puerto)
+        Conectado = abrirPuerto(arduino,puerto)
+        if not Conectado:
+            Conectado = escogerPuerto(arduino)
+            if not Conectado:
+                print("No se pudo conectar con el arduino")
     else:
-        ports = serial.tools.list_ports.comports()
-        portList = []
-        for port in ports:
-            portList.append(port)
-            print(str(port))
-        puerto = 'COM'
-        puerto += input('Escoga el COM')
-        arduino.port = puerto
-        abrirPuerto(arduino,puerto)
+        Conectado = escogerPuerto(arduino)
+        if not Conectado:
+            print("No se pudo conectar con el arduino")
 
     
 
