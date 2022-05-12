@@ -1,6 +1,6 @@
 import serial.tools.list_ports
 
-PORT_NAME = 'puertos.txt'
+PORT_NAME = './Puertos/puertos.txt'
 
 def revisarArchivo():
     try:
@@ -40,7 +40,7 @@ def escogerPuerto(arduino):
 
 def main():
     arduino = serial.Serial()
-    arduino.baudrate = 9600
+    arduino.baudrate = 115200
     
     puerto = revisarArchivo()
     arduino.port = puerto
