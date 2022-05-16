@@ -5,9 +5,9 @@ import datetime
 import random
 import time
 
-PORT_NAME = 'puertos.txt'
-NO_SERIE = 'noSerieExterior.txt'
-DATA_BASE = 'baseDatos.csv'
+PORT_NAME = './Puertos/puertos.txt'
+NO_SERIE = './Ubicacion/exterior.txt'
+DATA_BASE = './basedatos/datos.csv'
 
 chara = {
         "mayus":("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"),
