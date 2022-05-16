@@ -27,6 +27,6 @@ git init
 git remote add origin git@github.com:darkn-code/ClaseAI-2022.git
 git add .
 git commit -m "Tarea"
-git pull origin master
+git pull origin master/git pull origin master --allow-unrelated-histories
 git push origin master
 ------------------------------------------------------------------
