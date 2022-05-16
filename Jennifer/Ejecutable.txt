@@ -1,0 +1,32 @@
+"Comandos"
+
+Para hacer que el programa se ejecute varias veces es necesario emplear el siguiente comado:
+-----------------
+crontab -e
+-----------------
+
+Dentro del vim que se abre el formato a completar es el siguiente:
+
+" m h dom mon dow comand "
+
+m: Minutos
+h: Horas
+dom: Día del mes
+mon: Mes
+dow: Día de la semana
+command: Comando que se va a ejecutar
+
+Para ejecutar el archivo Jennifer2.py cada 30 minutos sería:
+--------------------------
+*/30 * * * * Jennifer2.py
+--------------------------
+
+"Para subir los datos al git"
+------------------------------------------------------------------
+git init
+git remote add origin git@github.com:darkn-code/ClaseAI-2022.git
+git add .
+git commit -m "Tarea"
+git pull origin master
+git push origin master
+------------------------------------------------------------------
