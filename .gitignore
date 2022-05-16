@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+*.swp
+*.py.swp
+*.motd_shown
+*.viminfo
+*.bash_history
