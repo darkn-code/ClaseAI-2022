@@ -6,10 +6,11 @@ def revisarArchivo():
     try:
         with open(PORT_NAME, 'r', encoding='utf-8') as f:
             puerto = f.readline()
+            print(puerto)
             f.close()
+        return puerto
     except:
         return ''
-    return puerto
 
 def abrirPuerto(arduino,puerto):
     try:
@@ -43,6 +44,8 @@ def main():
         puerto += input("Escoja el puerto COM: ")
         arduino.port = puerto
         abrirPuerto(arduino,puerto)
-    
+#        with open(PORT_NAME, 'w', encoding='utf-8') as f:
+#            f.write(puerto)
+#            f.close()
 if __name__ == '__main__':
     main()
