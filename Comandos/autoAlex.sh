@@ -2,6 +2,5 @@
 
 git pull origin master --allow-unrelated-histories
 python Alejnadro.py
-git add .
 git commit -am "Datos Exteriores Alejandro"
 git push origin master
