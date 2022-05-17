@@ -1,5 +1,5 @@
 #!/bin/bash
-python Alejnadro.py
+python3 Alejnadro.py
 
 git pull origin master --allow-unrelated-histories
 git add .
