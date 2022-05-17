@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ,S1:Temperatura,S2:Humedad,No Serie,Fecha,Hora,Lluvia
 0,27.8,32.5,EmYG,16/05/2022,10:41:39,0
 1,27.8,29.9,EmYG,16/05/2022,10:42:42,0
@@ -9,3 +10,6 @@
 7,10.0,50.0,EmYG,16/05/2022,19:58:33,1
 8,10.0,50.0,EmYG,16/05/2022,19:58:54,1
 9,10,50,EmYG,17/05/2022,08:11:57,1
+=======
+S1:Temperatura,S2:Humedad,No Serie,Fecha,Hora,Lluvia
+>>>>>>> e70f7ce7420e1f33782c047ceff2304d4b12f260

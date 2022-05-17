@@ -7,7 +7,8 @@ import time
 
 PORT_NAME = './Puertos/puertosAlejnadro.txt'
 NO_SERIE = './Ubicacion/exterior.txt'
-DATA_BASE = './basedatos/datos.csv'
+#DATA_BASE = './basedatos/datos.csv'
+dirDataBase = "./BaseDatos/{}"
 
 chara = {
         "mayus":("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"),
@@ -63,7 +64,7 @@ def abrirPuerto(arduino,puerto,noserie):
             f.write(puerto)
             f.close()
         
-        tablaDatos = pd.read_csv(BASE_DATOS)
+        tablaDatos = pd.read_csv(dirDataBase.format("datos.csv"))
         if (not tablaDatos.empty):
             tablaDatos.drop(["Unnamed: 0"],axis=1,inplace=True)
 
@@ -76,8 +77,9 @@ def abrirPuerto(arduino,puerto,noserie):
         hou = str(ct.time())
         luv = datos.split(',')[2]
         newData = {"S1:Temperatura":tem,"S2:Humedad":hum,"No Serie":noserie,"Fecha":dat,"Hora":hou,"Lluvia":luv}
+        print(newData)
         tablaDatos = tablaDatos.append(newData,ignore_index=True)
-        tablaDatos.to_csv(DATA_BASE)
+        tablaDatos.to_csv((dirDataBase).format("datos.csv",index=False))
         arduino.close()
     except:
         print("No se pudo conectar el Arduino")
