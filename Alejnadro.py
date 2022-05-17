@@ -5,7 +5,7 @@ import datetime
 import random
 import time
 
-PORT_NAME = './Puertos/puertos.txt'
+PORT_NAME = './Puertos/puertosAlejnadro.txt'
 NO_SERIE = './Ubicacion/exterior.txt'
 DATA_BASE = './basedatos/datos.csv'
 
