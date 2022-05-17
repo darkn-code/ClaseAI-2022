@@ -3,9 +3,11 @@ import serial.tools.list_ports
 #import pandas as pd
 import datetime
 import random
+import time
 
-PORT_NAME = 'puertos.txt'
-DATA_BASE = 'baseDatos.csv'
+PORT_NAME = './Puertos/puertos.txt'
+NO_SERIE = './Ubicacion/exterior.txt'
+DATA_BASE = './basedatos/datos.csv'
 
 chara = {
         "mayus":("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"),
@@ -44,24 +46,23 @@ def codeGen(size, esp):
         ind = ale[1]
     return passW
 
-def revisarArchivo():
+def revisarArchivo(archivo):
     try:
-        with open(PORT_NAME, 'r', encoding='utf-8') as f:
+        with open(archivo, 'r', encoding='utf-8') as f:
             puerto = f.readline()
-            print(puerto)
+#            print(puerto)
             f.close()
         return puerto
     except:
         return ''
 
-def abrirPuerto(arduino,puerto):
+def abrirPuerto(arduino,puerto,noserie):
     try:
         arduino.open()
         with open(PORT_NAME,'w',encoding='utf-8') as f:
             f.write(puerto)
             f.close()
         datos = arduino.readline()
-        cod = codeGen(10,False)
         ct = datetime.datetime.now()
         datos = datos.decode('utf-8')
         #datos = datos[:-2]+","+str(datetime.datetime.now())+","+cod+"\n"
@@ -70,24 +71,35 @@ def abrirPuerto(arduino,puerto):
         dat = str(ct.date())
         hou = str(ct.time())
         luv = datos.split(',')[2]
-        newData = tem+","+hum+","+cod+","+dat+","+hou+","+luv
+        newData = tem+","+hum+","+noserie+","+dat+","+hou+","+luv+"XD"
+        newData = newData[:-1]
         with open(DATA_BASE,'a') as df:
             df.write(newData)
             df.close()
         print(newData)
         arduino.close()
     except:
-        print("No se pudo conectar el Arduino XD")
+        print("No se pudo conectar el Arduino")
         arduino.close()
 
 def main():
     arduino = serial.Serial()
     arduino.baudrate = 9600
 
-    puerto = revisarArchivo()
+    cod = revisarArchivo(NO_SERIE)
+    if cod != '':
+        noserie = cod
+    else:
+        noserie = codeGen(10,False)
+        with open(NO_SERIE,'w') as f:
+            f.write(noserie)
+            f.close()
+
+    puerto = revisarArchivo(PORT_NAME)
     arduino.port=puerto
+
     if puerto != '':
-        abrirPuerto(arduino,puerto)
+        abrirPuerto(arduino,puerto,noserie)
     else:
         ports = serial.tools.list_ports.comports()
         portList = []
@@ -98,8 +110,10 @@ def main():
         puerto = 'COM'
         puerto += input("Escoja el puerto COM: ")
         arduino.port = puerto
-        abrirPuerto(arduino,puerto)
-#        with open(PORT_NAME, 'w', encoding='utf-8') as f:
+        abrirPuerto(arduino,puerto,noserie)
+        with open(PORT_NAME,'w', encoding='utf-8') as f:
+            f.write(puerto)
+            f.close()
 #            f.write(puerto)
 #            f.close()
 if __name__ == '__main__':
