@@ -62,6 +62,11 @@ def abrirPuerto(arduino,puerto,noserie):
         with open(PORT_NAME,'w',encoding='utf-8') as f:
             f.write(puerto)
             f.close()
+        
+        tablaDatos = pd.read_csv(BASE_DATOS)
+        if (not tablaDatos.empty):
+            tablaDatos.drop(["Unnamed: 0"],axis=1,inplace=True)
+
         datos = arduino.readline()
         ct = datetime.datetime.now()
         datos = datos.decode('utf-8')
@@ -70,12 +75,9 @@ def abrirPuerto(arduino,puerto,noserie):
         dat = str(ct.date())
         hou = str(ct.time())
         luv = datos.split(',')[2]
-        newData = tem+","+hum+","+noserie+","+dat+","+hou+","+luv+"XD"
-        newData = newData[:-1]
-        with open(DATA_BASE,'a') as df:
-            df.write(newData)
-            df.close()
-        print(newData)
+        newData = {"S1:Temperatura":tem,"S2:Humedad":hum,"No Serie":noserie,"Fecha":dat,"Hora":hou,"Lluvia":luv}
+        tablaDatos = tablaDatos.append(newData,ignore_index=True)
+        tablaDatos.to_csv(DATA_BASE)
         arduino.close()
     except:
         print("No se pudo conectar el Arduino")
