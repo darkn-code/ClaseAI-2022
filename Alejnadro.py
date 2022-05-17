@@ -1,6 +1,6 @@
 import serial.tools.list_ports
 #import numpy as np
-#import pandas as pd
+import pandas as pd
 import datetime
 import random
 import time
@@ -65,7 +65,6 @@ def abrirPuerto(arduino,puerto,noserie):
         datos = arduino.readline()
         ct = datetime.datetime.now()
         datos = datos.decode('utf-8')
-        #datos = datos[:-2]+","+str(datetime.datetime.now())+","+cod+"\n"
         tem = datos.split(',')[0]
         hum = datos.split(',')[1]
         dat = str(ct.date())
