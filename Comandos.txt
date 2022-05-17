@@ -1,0 +1,44 @@
+mkdir Jennifer
+git init #iniciar git
+git remote add origin "ssh del git de internet" #conectarse
+
+Crear llave:
+ssh-keygen -t rsa -b 4096 -C "jennifersilvapenalver@gmail.com"
+
+#enter
+#enter
+
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa (Shell)
+
+#Muestra una dirección a la cual tengo que llegar
+#Desde el home $ en otra pestaña de Ubuntu
+
+cd "copiar dirección hasta .ssh"
+explorer.exe .
+
+#Abrir archivo Tipo:Microsoft Publisher como txt
+Copiar todo
+En el git,en la parte del Avatar:
+Settings 
+SSH and GPG keys
+New SSH key
+Title: el q quiera
+key: Pego todo
+Add SSH key
+
+(Shell)
+git pull origin master/git pull origin master --allow-unrelated-histories
+git status
+git add . #Para agregar archivos si son nuevos 
+git commit -m "Nombre"
+git pull origin master
+git push origin master
+
+#Si se modifica un archivo que ya existe el comando sería:
+git commit -am "Nombre"
+
+git config --global user.email jennifersilvapenalver@gmail.com
+git config --global user.name JenniferSilv
+
+  
