@@ -1,5 +1,5 @@
 #!/bin/bash
-python Alejnadro.py
+Alejnadro.py
 
 git pull origin master --allow-unrelated-histories
 git add "basedatos/datos.csv"
