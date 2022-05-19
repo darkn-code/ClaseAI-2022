@@ -4,12 +4,13 @@ import numpy as np
 import random
 import string
 import datetime
+import time
 
-dirBaseDatos="./basedatos/{}"
-NO_SERIE= "./Ubicacion/oficina.txt"
+dirBaseDatos="./Jennifer/basedatos/{}" 
+NO_SERIE= "./Jennifer/Ubicacion/oficina.txt"
 
 
-PORT_NAME = './Puertos/puertos.txt'
+PORT_NAME = './Jennifer/Puertos/puertos.txt'
 
 def revisarArchivo():
     try:
@@ -23,6 +24,7 @@ def revisarArchivo():
 def abrirPuerto(arduino,puerto):
     try:
         arduino.open()
+        time.sleep(1)
         with open(PORT_NAME,'w',encoding='utf-8') as f:
             f.write(puerto)
             f.close()
@@ -78,6 +80,7 @@ def escogerPuerto(arduino):
     puerto = '/dev/ttyACM'
     puerto += str(input('Escoja el puerto'))
     arduino.port = puerto
+    print(puerto)
     Conectado = abrirPuerto(arduino,puerto)
     return Conectado
 
