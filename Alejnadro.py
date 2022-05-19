@@ -1,5 +1,4 @@
 import serial.tools.list_ports
-#import numpy as np
 import pandas as pd
 import datetime
 import random
@@ -60,7 +59,9 @@ def revisarArchivo(archivo):
 def abrirPuerto(arduino,puerto,noserie):
     try:
         arduino.open()
-        time.sleep(10)
+        time.sleep(2)
+        arduino.open()
+        time.sleep(1)
         with open(PORT_NAME,'w',encoding='utf-8') as f:
             f.write(puerto)
             f.close()
