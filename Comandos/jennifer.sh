@@ -1,4 +1,5 @@
 git pull origin master
-python Jennifer.py
+python3 Jennifer.py
 git commit -am "jenn-dato"
 git push origin master
+
