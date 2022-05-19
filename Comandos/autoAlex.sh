@@ -1,6 +1,6 @@
 #!/bin/bash
-cd Jennifer
-git pull origin master --allow-unrelated-histories
+cd Alex
+git pull origin master 
 python3 Alejnadro.py
 python3 Alejnadro.py
 git add .
