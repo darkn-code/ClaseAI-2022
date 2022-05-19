@@ -60,8 +60,6 @@ def abrirPuerto(arduino,puerto,noserie):
     try:
         arduino.open()
         time.sleep(2)
-        arduino.open()
-        time.sleep(1)
         with open(PORT_NAME,'w',encoding='utf-8') as f:
             f.write(puerto)
             f.close()
