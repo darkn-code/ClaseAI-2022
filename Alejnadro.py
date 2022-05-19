@@ -8,7 +8,7 @@ import time
 PORT_NAME = './Puertos/puertosAlejnadro.txt'
 NO_SERIE = './Ubicacion/exterior.txt'
 #DATA_BASE = './basedatos/datos.csv'
-dirDataBase = "./BaseDatos/{}"
+dirDataBase = "./basedatos/{}"
 
 chara = {
         "mayus":("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"),
@@ -87,7 +87,7 @@ def abrirPuerto(arduino,puerto,noserie):
 
 def main():
     arduino = serial.Serial()
-    arduino.baudrate = 9600
+    arduino.baudrate = 115200
 
     cod = revisarArchivo(NO_SERIE)
     if cod != '':

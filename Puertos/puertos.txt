@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 /dev/ttyACM0
+=======
+/dev/ttyUSB0
+>>>>>>> 4aa111b1286d4754f275bb02402736252b2ce8a1
