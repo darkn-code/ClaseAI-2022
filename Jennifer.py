@@ -5,7 +5,7 @@ import random
 import string
 import datetime
 
-dirBaseDatos="./BaseDatos/{}"
+dirBaseDatos="./basedatos/{}"
 NO_SERIE= "./Ubicacion/oficina.txt"
 
 
