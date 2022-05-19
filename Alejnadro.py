@@ -60,6 +60,7 @@ def revisarArchivo(archivo):
 def abrirPuerto(arduino,puerto,noserie):
     try:
         arduino.open()
+        time.sleep(1)
         with open(PORT_NAME,'w',encoding='utf-8') as f:
             f.write(puerto)
             f.close()
@@ -102,17 +103,21 @@ def main():
     arduino.port=puerto
 
     if puerto != '':
+        print(1)
+        print(puerto)
         abrirPuerto(arduino,puerto,noserie)
     else:
+        print(2)
         ports = serial.tools.list_ports.comports()
         portList = []
         for port in ports:
             portList.append(port)
             print(str(port))
         #arduino.port = 'COM6'
-        puerto = 'COM'
-        puerto += input("Escoja el puerto COM: ")
+        puerto = '/dev/ttyUSB'
+        puerto += input("Escoja el /dev/ttyUSB: ")
         arduino.port = puerto
+        print(puerto)
         abrirPuerto(arduino,puerto,noserie)
         with open(PORT_NAME,'w', encoding='utf-8') as f:
             f.write(puerto)
