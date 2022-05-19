@@ -75,8 +75,8 @@ def escogerPuerto(arduino):
     for port in ports:
         portList.append(port)
         print(str(port))
-    puerto = 'COM'
-    puerto += input('Escoja el COM')
+    puerto = '/dev/ttyACM'
+    puerto += str(input('Escoja el puerto'))
     arduino.port = puerto
     Conectado = abrirPuerto(arduino,puerto)
     return Conectado
