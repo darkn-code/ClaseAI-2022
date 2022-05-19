@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-dirBaseDatos="../BaseDatos/{}"
+dirBaseDatos="../basedatos/{}"
 
 datos={"S1:Temperatura":[],
         "S2:Humedad":[],

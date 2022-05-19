@@ -1,4 +1,5 @@
 import serial.tools.list_ports
+import time
 
 PORT_NAME = './Puertos/puertos.txt'
 
@@ -14,6 +15,7 @@ def revisarArchivo():
 def abrirPuerto(arduino,puerto):
     try:
         arduino.open()
+        time.sleep(1)
         with open(PORT_NAME,'w',encoding='utf-8') as f:
             f.write(puerto)
             f.close()
@@ -31,8 +33,8 @@ def escogerPuerto(arduino):
     for port in ports:
         portList.append(port)
         print(str(port))
-    puerto = 'COM'
-    puerto += input('Escoga el COM')
+    puerto = '/dev/ttyACM'
+    puerto += str(input('Escoga el /dev/ttyACM'))
     arduino.port = puerto
     Conectado = abrirPuerto(arduino,puerto)
     return Conectado
@@ -40,7 +42,7 @@ def escogerPuerto(arduino):
 
 def main():
     arduino = serial.Serial()
-    arduino.baudrate = 115200
+    arduino.baudrate = 9600
     
     puerto = revisarArchivo()
     arduino.port = puerto
