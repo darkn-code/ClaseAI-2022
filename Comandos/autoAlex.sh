@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd Jennifer
 git pull origin master --allow-unrelated-histories
 python3 Alejnadro.py
 python3 Alejnadro.py
