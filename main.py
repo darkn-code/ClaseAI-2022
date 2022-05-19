@@ -33,8 +33,8 @@ def escogerPuerto(arduino):
     for port in ports:
         portList.append(port)
         print(str(port))
-    puerto = '/dev/ttyACM'
-    puerto += str(input('Escoga el /dev/ttyACM'))
+    puerto = '/dev/ttyUSB'
+    puerto += str(input('Escoga el /dev/ttyUSB'))
     arduino.port = puerto
     Conectado = abrirPuerto(arduino,puerto)
     return Conectado
@@ -42,8 +42,7 @@ def escogerPuerto(arduino):
 
 def main():
     arduino = serial.Serial()
-    arduino.baudrate = 9600
-    
+    arduino.baudrate = 115200
     puerto = revisarArchivo()
     arduino.port = puerto
     if puerto != '':
