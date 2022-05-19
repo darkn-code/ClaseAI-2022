@@ -6,11 +6,9 @@ import string
 import datetime
 import time
 
-dirBaseDatos="./Jennifer/basedatos/{}" 
-NO_SERIE= "./Jennifer/Ubicacion/oficina.txt"
-
-
-PORT_NAME = './Jennifer/Puertos/puertos.txt'
+dirBaseDatos="./basedatos/{}" 
+NO_SERIE= "./Ubicacion/oficina.txt"
+PORT_NAME = './Puertos/puertos.txt'
 
 def revisarArchivo():
     try:
