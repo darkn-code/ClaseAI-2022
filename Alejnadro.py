@@ -60,7 +60,7 @@ def revisarArchivo(archivo):
 def abrirPuerto(arduino,puerto,noserie):
     try:
         arduino.open()
-        time.sleep(1)
+        time.sleep(10)
         with open(PORT_NAME,'w',encoding='utf-8') as f:
             f.write(puerto)
             f.close()
