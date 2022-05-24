@@ -1,5 +1,5 @@
 #!/bin/bash
-cd Alex
+cd ..
 git pull origin master 
 python3 Alejnadro.py
 python3 Alejnadro.py
