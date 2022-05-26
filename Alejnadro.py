@@ -78,8 +78,9 @@ def abrirPuerto(arduino,puerto,noserie):
         hou = str(ct.time())
         luv = datos.split(',')[2]
         newData = {"S1:Temperatura":tem,"S2:Humedad":hum,"No Serie":noserie,"Fecha":dat,"Hora":hou,"Lluvia":luv}
-        print(newData)
+       # print(newData)
         tablaDatos = tablaDatos.append(newData,ignore_index=True)
+        print(tablaDatos)
         tablaDatos.to_csv((dirDataBase).format("datos.csv",index=False))
         arduino.close()
     except:
