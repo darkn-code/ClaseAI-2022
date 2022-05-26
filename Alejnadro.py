@@ -67,7 +67,7 @@ def abrirPuerto(arduino,puerto,noserie):
         tablaDatos = pd.read_csv(dirDataBase.format("datos.csv"))
         if (not tablaDatos.empty):
             tablaDatos.drop(["Unnamed: 0"],axis=1,inplace=True)
-
+        tablaDatos.dropna(how="any",inplace=True )
         datos = arduino.readline()
         ct = datetime.datetime.now()
         datos = datos.decode('utf-8')
