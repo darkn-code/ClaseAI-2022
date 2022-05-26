@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~/
+cd ~/Alex
 python3 Alejnadro.py
 python3 Alejnadro.py
 git add .
