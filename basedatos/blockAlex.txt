@@ -1,0 +1,1 @@
+,S1:Temperatura,S2:Humedad,No Serie,Fecha,Hora,Lluvia
