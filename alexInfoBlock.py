@@ -64,30 +64,26 @@ def abrirPuerto(arduino,puerto,noserie):
             f.write(puerto)
             f.close()
         
-    
         #tablaDatos = pd.read_csv(dirDataBase.format("datos.csv"))
         #if (not tablaDatos.empty):
         #    tablaDatos.drop(["Unnamed: 0"],axis=1,inplace=True)
         #tablaDatos.dropna(how="any",inplace=True)
         
-        print("Antes")
         datos = arduino.readline()
         ct = datetime.datetime.now()
         datos = datos.decode('utf-8')
-        print(datos)
         tem = datos.split(',')[0]
         hum = datos.split(',')[1]
-        print("XD")
-        print("durante")
         dat = str(ct.date())
         hou = str(ct.time())
         luv = datos.split(',')[2]
-        newData = {"S1:Temperatura":tem,"S2:Humedad":hum,"No Serie":noserie,"Fecha":dat,"Hora":hou,"Lluvia":luv}
-        print("despues")
-        f.write(newData)
-        
-        with open(DATA_BASE, 'a',encoding='utf-8') as f:
+        newData = tem + "," + hum + "," + noserie + "," + dat + "," + hou + "," + luv
+        print(newData)
+        print("lectura lista")
+        with open(DATA_BASE,'a') as f:
+            print("apexx")
             f.write(newData)
+            print("anex")
             f.close()
 
         #tablaDatos = tablaDatos.append(newData,ignore_index=True)
