@@ -6,7 +6,7 @@ import time
 
 PORT_NAME = './Puertos/puertosAlejnadro.txt'
 NO_SERIE = './Ubicacion/exterior.txt'
-DATA_BASE = './basedatos/blockAlex.csv'
+DATA_BASE = './basedatos/blockAlex.txt'
 dirDataBase = "./basedatos/{}"
 
 chara = {
@@ -61,32 +61,33 @@ def abrirPuerto(arduino,puerto,noserie):
         arduino.open()
         time.sleep(2)
         with open(PORT_NAME,'w',encoding='utf-8') as f:
-            print("noReadBlock")
             f.write(puerto)
             f.close()
         
-        with open(DATA_BASE, 'r',encoding='utf-8') as f:
-            print("readBlock")
-            data = f.readlines()
-            print(data)
-            f.close()
-
-
+    
         #tablaDatos = pd.read_csv(dirDataBase.format("datos.csv"))
         #if (not tablaDatos.empty):
         #    tablaDatos.drop(["Unnamed: 0"],axis=1,inplace=True)
         #tablaDatos.dropna(how="any",inplace=True)
         
-        #datos = arduino.readline()
-        #ct = datetime.datetime.now()
-        #datos = datos.decode('utf-8')
-        #tem = datos.split(',')[0]
-        #hum = datos.split(',')[1]
-        #dat = str(ct.date())
-        #hou = str(ct.time())
-        #luv = datos.split(',')[2]
-        #newData = {"S1:Temperatura":tem,"S2:Humedad":hum,"No Serie":noserie,"Fecha":dat,"Hora":hou,"Lluvia":luv}
-       
+        print("Antes")
+        datos = arduino.readline()
+        ct = datetime.datetime.now()
+        datos = datos.decode('utf-8')
+        tem = datos.split(',')[0]
+        hum = datos.split(',')[1]
+        print("durante")
+        dat = str(ct.date())
+        hou = str(ct.time())
+        luv = datos.split(',')[2]
+        newData = {"S1:Temperatura":tem,"S2:Humedad":hum,"No Serie":noserie,"Fecha":dat,"Hora":hou,"Lluvia":luv}
+        print("despues")
+        f.write(newData)
+        
+        with open(DATA_BASE, 'a',encoding='utf-8') as f:
+            f.write(newData)
+            f.close()
+
         #tablaDatos = tablaDatos.append(newData,ignore_index=True)
         #print(tablaDatos)
         #tablaDatos.to_csv((dirDataBase).format("datos.csv",index=False))
