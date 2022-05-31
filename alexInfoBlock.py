@@ -74,8 +74,10 @@ def abrirPuerto(arduino,puerto,noserie):
         datos = arduino.readline()
         ct = datetime.datetime.now()
         datos = datos.decode('utf-8')
+        print(datos)
         tem = datos.split(',')[0]
         hum = datos.split(',')[1]
+        print("XD")
         print("durante")
         dat = str(ct.date())
         hou = str(ct.time())
