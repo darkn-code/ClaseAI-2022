@@ -44,6 +44,10 @@ def main():
             tablaDatos = tablaDatos.append(newData,ignore_index=True)
             print(tablaDatos)
             tablaDatos.to_csv((dirDataBase).format("datos.csv",index=False))
+        tablaDatos.dropna(how="any",inplace=True)
+        f = open(DATA_BASE,'r+')
+        f.truncate(0)
+        f.close()
     except:
         print("XD")
 
