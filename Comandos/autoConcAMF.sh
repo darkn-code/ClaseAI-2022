@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ~/Alex
+git pull origin master
 python3 concatenadoDatosAMF.py
 git add .
 git commit -m "Datos Exteriores Agrupados  Alejandro"
-git pull origin master
 git push origin master
