@@ -1,6 +1,6 @@
 #!/bin/bash
 cd ~/Alex
-git mull origin master
+git pull origin master
 python3 alexInfoBlock.py
 python3 alexInfoBlock.py
 git add .
