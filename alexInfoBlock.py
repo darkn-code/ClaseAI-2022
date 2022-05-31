@@ -75,9 +75,9 @@ def abrirPuerto(arduino,puerto,noserie):
         tem = datos.split(',')[0]
         hum = datos.split(',')[1]
         dat = str(ct.date())
-        dat = dat.strftime("%d/%m/%Y")
+        #dat = dat.strftime("%d/%m/%Y")
         hou = str(ct.time())
-        hou = hoy.strftime("%H:%M:%S")
+        #hou = hoy.strftime("%H:%M:%S")
         luv = datos.split(',')[2]
         newData = tem + "," + hum + "," + noserie + "," + dat + "," + hou + "," + luv
         print(newData)
